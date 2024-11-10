@@ -2,6 +2,7 @@ FROM pytorch/torchserve:0.11.0-cpu as builder
 
 USER root
 
+# Instalar FFmpeg
 RUN apt-get update && apt-get install -y ffmpeg
 
 WORKDIR /app
@@ -9,3 +10,5 @@ WORKDIR /app
 COPY . ./
 
 RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+CMD ["python", "app.py"]  # Substitua "app.py" se necessário
